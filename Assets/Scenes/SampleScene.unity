@@ -385,11 +385,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &1246610033
-=======
---- !u!1 &1151694410
->>>>>>> testing
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,37 +393,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 1246610035}
   - component: {fileID: 1246610034}
   m_Layer: 0
   m_Name: Triangle
-=======
-  - component: {fileID: 1151694412}
-  - component: {fileID: 1151694411}
-  m_Layer: 0
-  m_Name: yes
->>>>>>> testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!212 &1246610034
-=======
---- !u!212 &1151694411
->>>>>>> testing
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1246610033}
-=======
-  m_GameObject: {fileID: 1151694410}
->>>>>>> testing
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -476,27 +457,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
 --- !u!4 &1246610035
-=======
---- !u!4 &1151694412
->>>>>>> testing
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1246610033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5156992, y: -2.1774652, z: 0}
-=======
-  m_GameObject: {fileID: 1151694410}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51569915, y: -1.9661319, z: 0}
->>>>>>> testing
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,8 +606,11 @@ SceneRoots:
   - {fileID: 1246610035}
 =======
   - {fileID: 1945246382}
+<<<<<<< HEAD
   - {fileID: 463904584}
   - {fileID: 1151694412}
 >>>>>>> testing
+=======
+>>>>>>> parent of fbaa092 (added ur mum)
 =======
 >>>>>>> parent of fbaa092 (added ur mum)
