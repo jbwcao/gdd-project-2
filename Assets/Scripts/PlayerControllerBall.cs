@@ -45,10 +45,10 @@ public class PlayerControllerBall : MonoBehaviour
 {
     if (isCharging)
     {
-        rb.velocity = new Vector2(0f, rb.velocity.y);
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         return;
     }
-    rb.velocity = new Vector2(x_input * moveSpeed, rb.velocity.y);
+    rb.linearVelocity = new Vector2(x_input * moveSpeed, rb.linearVelocity.y);
 }
     
     void OnTriggerEnter2D (Collider2D coll) {
