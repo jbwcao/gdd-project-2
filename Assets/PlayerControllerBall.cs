@@ -10,11 +10,8 @@ public class PlayerControllerBall : MonoBehaviour
     [SerializeField] private float jumpMultiplier;
     private float chargeTime;
     private bool isCharging = false;
-
-    [SerializeField] private float jumpForce;
     [SerializeField] private float moveSpeed;
     float x_input;
-    bool isCharging = false;
    
    void Start()
     {
@@ -47,15 +44,7 @@ public class PlayerControllerBall : MonoBehaviour
 
    
     
-     void OnCollisionEnter2D (Collision2D coll) {
-        x_input = Input.GetAxisRaw("Horizontal");
-        
-        if (!isCharging)
-        {
-            Move();
-        }
-       
-    }
+     
 
     private void Move()
     {
@@ -72,16 +61,23 @@ public class PlayerControllerBall : MonoBehaviour
         }
     }
     
-    
-    void OnCollisionEnter2D (Collision2D coll)
-    {
+    void OnTriggerEnter2D (Collision2D coll) {
+        x_input = Input.GetAxisRaw("Horizontal");
         if (coll.gameObject.CompareTag("Ground"))
         {
             canJump = true;
         }
+        
+        if (!isCharging)
+        {
+            Move();
+        }
+       
     }
+    
+    
 
-    void OnCollisionExit2D (Collision2D coll)
+    void OnTriggerExit2D (Collision2D coll)
     {
         if (coll.gameObject.CompareTag("Ground"))
         {
