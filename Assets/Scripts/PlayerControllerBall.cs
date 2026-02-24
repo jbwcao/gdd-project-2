@@ -21,7 +21,7 @@ public class PlayerControllerBall : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-         x_input = Input.GetAxisRaw("Horizontal");
+        x_input = Input.GetAxisRaw("Horizontal");
         Move();
         if (Input.GetKey(KeyCode.Space) && canJump)
         {
@@ -52,8 +52,9 @@ public class PlayerControllerBall : MonoBehaviour
 }
     
     void OnTriggerEnter2D (Collider2D coll) {
+        Debug.Log("got here");
         x_input = Input.GetAxisRaw("Horizontal");
-        if (coll.gameObject.CompareTag("Ground"))
+        if (coll.gameObject.CompareTag("Wall"))
         {
             canJump = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
@@ -62,7 +63,7 @@ public class PlayerControllerBall : MonoBehaviour
     
     void OnTriggerExit2D (Collider2D coll)
     {
-        if (coll.gameObject.CompareTag("Ground"))
+        if (coll.gameObject.CompareTag("Wall"))
         {
             canJump = false;
         }
