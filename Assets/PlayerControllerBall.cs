@@ -16,7 +16,6 @@ public class PlayerControllerBall : MonoBehaviour
    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
     }
 
     // Update is called once per frame
@@ -39,25 +38,26 @@ public class PlayerControllerBall : MonoBehaviour
             isCharging = false;
             canJump = false;
             chargeTime = 0f;
-        }
-            
-            
+        } 
     }
 
     private void Move()
+{
+    if (isCharging)
     {
-        rb.velocity = new Vector2(x_input * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        return;
     }
+    rb.velocity = new Vector2(x_input * moveSpeed, rb.velocity.y);
+}
     
     void OnTriggerEnter2D (Collider2D coll) {
         x_input = Input.GetAxisRaw("Horizontal");
         if (coll.gameObject.CompareTag("Ground"))
         {
             canJump = true;
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         }
-    
-       
     }
     
     void OnTriggerExit2D (Collider2D coll)
