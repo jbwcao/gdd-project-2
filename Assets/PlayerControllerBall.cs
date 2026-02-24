@@ -11,6 +11,11 @@ public class PlayerControllerBall : MonoBehaviour
     private float chargeTime;
     private bool isCharging = false;
 
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float moveSpeed;
+    float x_input;
+    bool isCharging = false;
+   
    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,7 +47,33 @@ public class PlayerControllerBall : MonoBehaviour
 
    
     
-     void OnCollisionEnter2D (Collision2D coll)
+     void OnCollisionEnter2D (Collision2D coll) {
+        x_input = Input.GetAxisRaw("Horizontal");
+        
+        if (!isCharging)
+        {
+            Move();
+        }
+       
+    }
+
+    private void Move()
+    {
+        if(x_input > 0)
+        {
+            rb.linearVelocity = Vector2.right * moveSpeed;
+        } else if (x_input < 0)
+        {
+            rb.linearVelocity = Vector2.left * moveSpeed;
+            
+        } else 
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+    
+    
+    void OnCollisionEnter2D (Collision2D coll)
     {
         if (coll.gameObject.CompareTag("Ground"))
         {
