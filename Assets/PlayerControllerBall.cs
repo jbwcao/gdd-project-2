@@ -6,6 +6,9 @@ public class PlayerControllerBall : MonoBehaviour
      private Rigidbody2D rb;
     private bool canJump;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float moveSpeed;
+    float x_input;
+    bool isCharging = false;
    
    void Start()
     {
@@ -21,21 +24,45 @@ public class PlayerControllerBall : MonoBehaviour
             rb.linearVelocity = new Vector2(0, jumpForce);
     }
 
+        x_input = Input.GetAxisRaw("Horizontal");
+        
+        if (!isCharging)
+        {
+            Move();
+        }
+       
+    }
+
+    private void Move()
+    {
+        if(x_input > 0)
+        {
+            rb.linearVelocity = Vector2.right * moveSpeed;
+        } else if (x_input < 0)
+        {
+            rb.linearVelocity = Vector2.left * moveSpeed;
+            
+        } else 
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+    
+    
     void OnCollisionEnter2D (Collision2D coll)
     {
-        if (coll.GameObject.CompareTag("Ground"))
+        if (coll.gameObject.CompareTag("Ground"))
         {
             canJump = true;
         }
     }
 
-    void OnCollisionExit2D (Collsion2D coll)
+    void OnCollisionExit2D (Collision2D coll)
     {
-        if (coll.GameObject.CompareTag("Ground"))
+        if (coll.gameObject.CompareTag("Ground"))
         {
             canJump = false;
         }
-    }
     }
 }
 
