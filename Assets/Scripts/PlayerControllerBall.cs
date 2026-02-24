@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllerBall : MonoBehaviour
 {
@@ -12,23 +13,29 @@ public class PlayerControllerBall : MonoBehaviour
     private bool isCharging = false;
     [SerializeField] private float moveSpeed;
     float x_input;
+    private bool touchingWall;
+    public Slider JumpSlider;
+    private bool isGrabbing;
+    
    
    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        JumpSlider.value = 0;
     }
 
     // Update is called once per frame
     void Update() 
     {
         x_input = Input.GetAxisRaw("Horizontal");
-        Move();
+        
         if (Input.GetKey(KeyCode.Space) && canJump)
         {
             isCharging = true;
             if (chargeTime <= maxChargeTime)
             {
                 chargeTime += Time.deltaTime;
+                
             }
             
         }
@@ -38,34 +45,60 @@ public class PlayerControllerBall : MonoBehaviour
             isCharging = false;
             canJump = false;
             chargeTime = 0f;
+            isGrabbing = false;
+            
         } 
+        if (Input.GetKey(KeyCode.S) && touchingWall)
+        {
+            isGrabbing = true;
+        }
+
+        Move();
+        JumpSlider.value = chargeTime / maxChargeTime;
+    
+    }
+    void FixedUpdate()
+    {
+        if (isGrabbing)
+    {
+        rb.gravityScale = 0f;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+    }
+    else
+    {
+        rb.gravityScale = 1f;
+    }
+        
     }
 
     private void Move()
 {
-    if (isCharging)
-    {
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-        return;
-    }
+    if (isCharging || isGrabbing)
+        {
+            return;
+        }
+        
     rb.linearVelocity = new Vector2(x_input * moveSpeed, rb.linearVelocity.y);
+    
 }
     
-    void OnTriggerEnter2D (Collider2D coll) {
-        Debug.Log("got here");
-        x_input = Input.GetAxisRaw("Horizontal");
+    void OnTriggerStay2D (Collider2D coll) {
+        
         if (coll.gameObject.CompareTag("Wall"))
         {
             canJump = true;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            touchingWall = true;
         }
     }
+    
     
     void OnTriggerExit2D (Collider2D coll)
     {
         if (coll.gameObject.CompareTag("Wall"))
         {
             canJump = false;
+            touchingWall = false;
         }
     }
 }
