@@ -23,17 +23,22 @@ public class PlayerControllerBall : MonoBehaviour {
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         JumpSlider.value = 0;
+        isGrabbing = true;
     }
 
     // Update is called once per frame
     void Update() {
         x_input = Input.GetAxisRaw("Horizontal");
         
-        if (Input.GetKey(KeyCode.Space) && canJump) {
+        if (Input.GetKey(KeyCode.Space) && canJump && isGrabbing) {
             isCharging = true;
+            transform.localScale = (1 - (chargeTime / maxChargeTime) / 2) * Vector3.one;
             if (chargeTime <= maxChargeTime) {
                 chargeTime += Time.deltaTime;
             }
+        } else
+        {
+            transform.localScale = Vector3.one;
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isCharging) {
