@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Spikes
+  - Cloud
   layers:
   - Default
   - TransparentFX
