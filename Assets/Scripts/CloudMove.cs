@@ -4,22 +4,36 @@ using UnityEngine;
 public class CloudMove : MonoBehaviour
 {
     private float speed;
-    [SerializeField] float resetX;
-    [SerializeField] float startX;
+    float boundedX = 13f;
+    float spawnX = -8f;
+    int dirTravel;
     
     void Start ()
     {
         speed = Random.Range(0.5f, 1.5f);
+        dirTravel = Random.Range(0,2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        if (transform.position.x >= resetX)
+        if (dirTravel == 1)
         {
-            transform.position = new Vector2(startX, transform.position.y);
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+            if (transform.position.x >= boundedX)
+            {
+                transform.position = new Vector2(spawnX, transform.position.y);
+            }
+            
+        }
+        else {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+
+            if (transform.position.x <= spawnX)
+            {
+                transform.position = new Vector2(boundedX, transform.position.y);
+            }
         }
     }
 }
