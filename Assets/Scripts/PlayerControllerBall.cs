@@ -13,19 +13,25 @@ public class PlayerControllerBall : MonoBehaviour {
     private bool isCharging = false;
     #endregion
 
+    [SerializeField] Transform tomatoTransform;
     [SerializeField] private float moveSpeed;
     float x_input;
+
     private bool touchingWall;
-    public Slider JumpSlider;
     private bool isGrabbing;
 
-    private Vector2 lastPos;
+    public Slider JumpSlider;
+
+    private Vector2 initialRespawnPosition;
+    private Vector2 initialRespawnOffset;
+    private Vector2 respawnPosition;
+    private GameObject lastCloud;
    
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         JumpSlider.value = 0;
         isGrabbing = true;
-        lastPos = transform.position;
+        respawnPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -34,13 +40,13 @@ public class PlayerControllerBall : MonoBehaviour {
         
         if (Input.GetKey(KeyCode.Space) && canJump && isGrabbing) {
             isCharging = true;
-            transform.localScale = (1 - (chargeTime / maxChargeTime) / 2) * Vector3.one;
+            tomatoTransform.localScale = Vector3.one * (1 - (chargeTime / maxChargeTime) / 2);
             if (chargeTime <= maxChargeTime) {
-                chargeTime += Time.deltaTime;
+                chargeTime += Time.deltaTime * 2f;
             }
         } else
         {
-            transform.localScale = Vector3.one;
+            tomatoTransform.localScale = Vector3.one;
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isCharging) {
@@ -51,9 +57,14 @@ public class PlayerControllerBall : MonoBehaviour {
             isGrabbing = false;
         } 
 
-        if (Input.GetKey(KeyCode.S) && touchingWall) {
+        if (Input.GetKeyDown(KeyCode.S) && touchingWall) {
             isGrabbing = true;
-            lastPos = transform.position;
+            respawnPosition = transform.position;
+            if (lastCloud)
+            {
+                initialRespawnPosition = respawnPosition;
+                initialRespawnOffset = lastCloud.GetComponent<CloudPlatformScript>().currOffset;
+            }
         }
 
         Move();
@@ -73,6 +84,13 @@ public class PlayerControllerBall : MonoBehaviour {
     }
 
     private void Move() {
+        if (lastCloud && isGrabbing)
+        {
+            respawnPosition = initialRespawnPosition + lastCloud.GetComponent<CloudPlatformScript>().currOffset - initialRespawnOffset;
+            transform.position = respawnPosition;
+            return;
+        }
+
         if (isCharging || isGrabbing) {
             return;
         }
@@ -82,28 +100,35 @@ public class PlayerControllerBall : MonoBehaviour {
 
     private void Respawn()
     {
-        transform.position = lastPos;
+        transform.position = respawnPosition;
         isGrabbing = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if(coll.gameObject.CompareTag("Spikes"))
+    void OnTriggerStay2D (Collider2D coll) {
+        if (coll.gameObject.CompareTag("Spikes"))
         {
             Respawn();
         }
-    }
-
-    void OnTriggerStay2D (Collider2D coll) {
-        if (coll.gameObject.CompareTag("Wall")) {
+        else if (coll.gameObject.CompareTag("Wall")) {
             canJump = true;
             touchingWall = true;
+            if (isGrabbing)
+            {
+                lastCloud = null;
+            }
+        }
+        else if (coll.gameObject.CompareTag("Cloud"))
+        {
+            canJump = true;
+            touchingWall = true;
+            lastCloud = coll.gameObject;
+
         }
     }
     
     
     void OnTriggerExit2D (Collider2D coll) {
-        if (coll.gameObject.CompareTag("Wall")) {
+        if (coll.gameObject.CompareTag("Wall") || coll.gameObject.CompareTag("Cloud")) {
             canJump = false;
             touchingWall = false;
         }
