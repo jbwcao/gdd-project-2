@@ -18,12 +18,14 @@ public class PlayerControllerBall : MonoBehaviour {
     private bool touchingWall;
     public Slider JumpSlider;
     private bool isGrabbing;
-    
+
+    private Vector2 lastPos;
    
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         JumpSlider.value = 0;
         isGrabbing = true;
+        lastPos = transform.position;
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class PlayerControllerBall : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.S) && touchingWall) {
             isGrabbing = true;
+            lastPos = transform.position;
         }
 
         Move();
@@ -76,7 +79,21 @@ public class PlayerControllerBall : MonoBehaviour {
 
         rb.linearVelocity = new Vector2(x_input * moveSpeed, rb.linearVelocity.y);
     }
-    
+
+    private void Respawn()
+    {
+        transform.position = lastPos;
+        isGrabbing = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if(coll.gameObject.CompareTag("Spikes"))
+        {
+            Respawn();
+        }
+    }
+
     void OnTriggerStay2D (Collider2D coll) {
         if (coll.gameObject.CompareTag("Wall")) {
             canJump = true;
