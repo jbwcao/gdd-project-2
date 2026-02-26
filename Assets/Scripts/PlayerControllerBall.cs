@@ -20,12 +20,17 @@ public class PlayerControllerBall : MonoBehaviour {
     private bool isGrabbing;
 
     private Vector2 lastPos;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip stickSound;
+    [SerializeField] private AudioClip deathSound;
    
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         JumpSlider.value = 0;
         isGrabbing = true;
         lastPos = transform.position;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,11 +54,14 @@ public class PlayerControllerBall : MonoBehaviour {
             canJump = false;
             chargeTime = 0f;
             isGrabbing = false;
+            audioSource.PlayOneShot(jumpSound, 0.3f);
         } 
 
-        if (Input.GetKey(KeyCode.S) && touchingWall) {
+        if (Input.GetKeyDown(KeyCode.S) && touchingWall) {
             isGrabbing = true;
             lastPos = transform.position;
+            audioSource.PlayOneShot(stickSound, 2f);
+
         }
 
         Move();
@@ -84,12 +92,14 @@ public class PlayerControllerBall : MonoBehaviour {
     {
         transform.position = lastPos;
         isGrabbing = true;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if(coll.gameObject.CompareTag("Spikes"))
         {
+            audioSource.PlayOneShot(deathSound, .3f);
             Respawn();
         }
     }
