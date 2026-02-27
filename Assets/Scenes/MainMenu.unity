@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SAMPLE TITLE HERE
+  m_text: Sticky Gang's Tomato
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b805b25c8bae64d91b2e97ef24c19c5b, type: 2}
   m_sharedMaterial: {fileID: -8152708363262619716, guid: b805b25c8bae64d91b2e97ef24c19c5b, type: 2}
