@@ -29,6 +29,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    public void WinGame()
+    {
+        SceneManager.LoadScene("WinGame");
+    }
+
+    public void LoseGame()
+    {
+        
+    }
 
 
     // Update is called once per frame

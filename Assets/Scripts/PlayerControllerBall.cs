@@ -31,6 +31,7 @@ public class PlayerControllerBall : MonoBehaviour {
     private Vector2 initialRespawnOffset;
     private Vector2 respawnPosition;
     private GameObject lastCloud;
+    GameManager gameManager;
    
    void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -136,6 +137,11 @@ public class PlayerControllerBall : MonoBehaviour {
             touchingWall = true;
             lastCloud = coll.gameObject;
 
+        }
+        else if (coll.gameObject.CompareTag("Win"))
+        {
+            GameManager.Instance.WinGame();
+            Destroy(this.gameObject);
         }
     }
     
