@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1946504130170033591}
   - component: {fileID: 8528052709785386636}
   m_Layer: 0
-  m_Name: Star
-  m_TagString: Untagged
+  m_Name: Salad
+  m_TagString: Win
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3805206173550384955, guid: e790601f934bd45a29a515a21791b3b9, type: 3}
+  m_Sprite: {fileID: 4175774306879865481, guid: 6e3515c8a016c4fdcb688ecb6f649cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
