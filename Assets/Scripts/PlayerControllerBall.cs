@@ -25,6 +25,7 @@ public class PlayerControllerBall : MonoBehaviour {
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip stickSound;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private GameObject splat;
     public Slider JumpSlider;
 
     private Vector2 initialRespawnPosition;
@@ -70,6 +71,7 @@ public class PlayerControllerBall : MonoBehaviour {
             isGrabbing = true;
             lastPos = transform.position;
             audioSource.PlayOneShot(stickSound, 2f);
+            Instantiate(splat, transform.position, Quaternion.identity);
 
             respawnPosition = transform.position;
             if (lastCloud)

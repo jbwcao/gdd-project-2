@@ -310,6 +310,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bfb92d2a6c284c3aa7236ef8a8b451c, type: 3}
+--- !u!1 &454869534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 454869536}
+  - component: {fileID: 454869535}
+  m_Layer: 0
+  m_Name: SplatSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &454869535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454869534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c36017f64fb41219d017f0af318241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5
+--- !u!4 &454869536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454869534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0714426, y: -2.8226519, z: 1.01057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459881351
 GameObject:
   m_ObjectHideFlags: 0
@@ -37069,6 +37114,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 3ec8de96ee45f4a9abb5ab843342ec46, type: 3}
   stickSound: {fileID: 8300000, guid: 531d4705adc804daf96f01fa93a0d86f, type: 3}
   deathSound: {fileID: 8300000, guid: 60f2f015b4ceb4c308108d13d1b277f0, type: 3}
+  splat: {fileID: 6774450792098832008, guid: d24064ff2691d429c9934770630cd977, type: 3}
   JumpSlider: {fileID: 1411935010}
 --- !u!82 &1844075346
 AudioSource:
@@ -37340,9 +37386,10 @@ SceneRoots:
   - {fileID: 1446671979}
   - {fileID: 1480362956}
   - {fileID: 1132827520}
+  - {fileID: 483593832}
+  - {fileID: 454869536}
   - {fileID: 1822901480}
   - {fileID: 527907594}
-  - {fileID: 483593832}
   - {fileID: 1527529226}
   - {fileID: 1313479021}
   - {fileID: 1088508783}
