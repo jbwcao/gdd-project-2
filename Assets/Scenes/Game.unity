@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: moveSpeed
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: horizontalMovement
@@ -178,6 +178,71 @@ PrefabInstance:
     - target: {fileID: 8340377505338117367, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_Name
       value: pixilCloud (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+--- !u!1001 &206326621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: horizontalMovement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 45.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340377505338117367, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: m_Name
+      value: pixilCloud (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -430,7 +495,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -711,8 +776,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
-      propertyPath: moveSpeed
+      propertyPath: moveRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: moveSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: horizontalMovement
@@ -720,11 +789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.16
+      value: 47.88
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.92
+      value: 36.83
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36602,6 +36671,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
+      propertyPath: moveRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325689108567491542, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: moveSpeed
       value: -1
       objectReference: {fileID: 0}
@@ -36611,11 +36684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.8
+      value: 53.94
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50.5
+      value: 51.81
       objectReference: {fileID: 0}
     - target: {fileID: 5546109840174571779, guid: 60820508181624eb8b20e6912fc49266, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37124,3 +37197,4 @@ SceneRoots:
   - {fileID: 1088508783}
   - {fileID: 1812901350}
   - {fileID: 200387436}
+  - {fileID: 206326621}

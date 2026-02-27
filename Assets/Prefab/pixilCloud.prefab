@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7354574140673215225}
   m_Layer: 0
   m_Name: pixilCloud
-  m_TagString: Wall
+  m_TagString: Cloud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   moveRange: 2
-  verticalMovement: 0
+  horizontalMovement: 0
+  currOffset: {x: 0, y: 0}
 --- !u!60 &-7354574140673215225
 PolygonCollider2D:
   m_ObjectHideFlags: 0
